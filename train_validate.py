@@ -24,7 +24,7 @@ def compile_and_train(X_train, y_train, X_val, y_val, vocab_size, embedding_matr
     model = build_model(vocab_size, embedding_matrix, embedding_dim=embedding_dim)
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
     time_callback = TimeHistory()
-    history = model.fit(X_train, y_train, epochs=30, validation_data=(X_val, y_val),callbacks=time_callback)
+    history = model.fit(X_train, y_train, epochs=10, validation_data=(X_val, y_val),callbacks=time_callback)
     total_training_time = time_callback.total_time
     epoch_times = time_callback.times
     return model, history,total_training_time,epoch_times
