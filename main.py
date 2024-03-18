@@ -1,11 +1,9 @@
 import pandas as pd
-from train_word2vec import tokenize_emails, train_word2vec
-from tokenizer import tokenizer  # Ensure this is available for tokenizing your data for the model
-import numpy as np
-import pandas as pd
+
 from data_loader import *
 from fine_tune_evaluate import evaluate_and_log_model
 from train_validate import compile_and_train
+from train_word2vec import tokenize_emails, train_word2vec
 
 data = pd.read_csv('./spam_ham_dataset.csv')
 pd.set_option('display.max_columns', None)  # Display all columns
@@ -37,7 +35,8 @@ for word, i in word_index.items():
         if embedding_vector is not None:
             embedding_matrix[i] = embedding_vector
 
-model, history = compile_and_train(X_train, y_train, X_val, y_val, vocab_size, embedding_matrix=embedding_matrix)
+model, history, total_training_time, epoch_times = compile_and_train(X_train, y_train, X_val, y_val, vocab_size,
+                                                                     embedding_matrix=embedding_matrix)
 model.summary()
-
+print(total_training_time, '\n', epoch_times)
 evaluate_and_log_model(model, history, X_test, y_test)

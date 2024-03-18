@@ -1,0 +1,2 @@
+final_epoch,final_accuracy,final_val_accuracy,final_loss,final_val_loss,test_accuracy,test_loss,precision,recall,f1_score,auc_score,num_layers,embedding_output_dim,optimizer_name,learning_rate,batch_size
+30,0.9996775984764099,0.9767891764640808,0.0023181382566690445,0.1298939734697342,0.9777777791023254,0.12428039312362671,0.9780423280423282,0.9777777777777777,0.977856278311031,0.99408939955659,8,1000,Adam,,
