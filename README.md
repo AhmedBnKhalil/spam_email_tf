@@ -43,3 +43,8 @@ python main.py
 ```
 
 1. The script will preprocess the data, train the Word2Vec model, train the neural network, and log the performance metrics.
+
+   ## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
