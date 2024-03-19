@@ -3,12 +3,16 @@ from tensorflow.keras.models import Sequential
 from time_callback import TimeHistory
 
 
-def build_model(vocab_size, embedding_matrix, embedding_dim=1000):
+def build_model(vocab_size, embedding_matrix, embedding_dim=500):
     model = Sequential([
         tf.keras.layers.Embedding(input_dim=vocab_size, output_dim=embedding_dim,
                                   embeddings_initializer=tf.keras.initializers.Constant(embedding_matrix),
                                   trainable=False),
+        tf.keras.layers.LSTM(1000, return_sequences=True),
+        tf.keras.layers.Dropout(0.2),
         tf.keras.layers.LSTM(500, return_sequences=True),
+        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.LSTM(100, return_sequences=True),
         tf.keras.layers.Dropout(0.2),
         tf.keras.layers.LSTM(64,return_sequences=True),
         tf.keras.layers.Dropout(0.2),

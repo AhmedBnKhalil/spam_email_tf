@@ -38,5 +38,4 @@ for word, i in word_index.items():
 model, history, total_training_time, epoch_times = compile_and_train(X_train, y_train, X_val, y_val, vocab_size,
                                                                      embedding_matrix=embedding_matrix)
 model.summary()
-print(total_training_time, '\n', epoch_times)
 evaluate_and_log_model(model, history, X_test, y_test)
